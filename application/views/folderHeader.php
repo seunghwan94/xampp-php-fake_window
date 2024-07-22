@@ -40,8 +40,8 @@
       <!-- 첫번째 줄 -->
       <div class="gap-2" style="display:flex; justify-content:space-between; align-items:center;padding: 3px 10px;background:#aaaaaa;border-bottom: 2px solid #333;">
         <div>
-          <img src="../../assets/img/trash.png" style="width:20px;"> 
-          &nbsp Trash
+          <img src="../../assets/img/folder.png" style="width:20px;"> 
+          &nbsp folder
         </div>
         <div>
           <button style=" background:lightgray"><img src="../../assets/img/minimize.png" style="width:10px;"></button>

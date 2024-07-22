@@ -32,7 +32,7 @@
         <!-- 첫번째 -->
         <div class="main-row">
             <div class="main-column">
-                <button type="button" class="btn btn-light btn-lg m-2" data-toggle="modal" data-target="#modalInfo">
+            <button type="button" class="btn btn-light btn-lg m-2"  data-url="https://gentle-chokeberry-d27.notion.site/Seunghwan-Lee-e92f24b810e24d1f84a0fbbceca7b764" onclick="moveURL(this)">
                     <img src="../../assets/img/window.png" style="width:40px;">
                 </button>
                 <h5>info</h5>
@@ -71,27 +71,7 @@
     </div>
 
     
-    <!-- Info Modal -->
-    <div class="modal fade" id="modalInfo" tabindex="-1" role="dialog" aria-labelledby="modalInfoLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalInfoLabel">Info Modal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Info modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<!-- Modal Stary -->
     <!-- Trash Modal -->
     <div class="modal fade" id="modalTrash" tabindex="-1" role="dialog" aria-labelledby="modalTrashLabel" aria-hidden="true" data-url="http://magolee/fnt/trash">
         <div class="modal-dialog modal-lg" role="document">
@@ -124,55 +104,37 @@
             </div>
         </div>
     </div>
+<!-- Modal End -->
 </body>
 <script>
-
 $(document).ready(function() {
-    $('#modalTrash').on('show.bs.modal', function (e) {
-        var dataUrl = $(this).data('url');
-        $.ajax({
-            url: dataUrl, // HTTPS 프로토콜 사용
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                $('#modalContentTrash').html(data); // 모달의 내용을 가져온 데이터로 설정
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error);
-            }
+    // Function to handle modal loading via AJAX
+    function loadModalContent(modalId, contentId, url) {
+        $(modalId).on('show.bs.modal', function (e) {
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                success: function(data) {
+                    $(contentId).html(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error('AJAX Error:', status, error);
+                }
+            });
         });
-    });
+    }
     
-    $('#modalWindow').on('show.bs.modal', function (e) {
-        var dataUrl = $(this).data('url');
-        $.ajax({
-            url: dataUrl, // HTTPS 프로토콜 사용
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                $('#modalContentWindow').html(data); // 모달의 내용을 가져온 데이터로 설정
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error);
-            }
-        });
-    });
+    loadModalContent('#modalTrash', '#modalContentTrash', 'http://magolee/fnt/trash');
+    loadModalContent('#modalWindow', '#modalContentWindow', 'http://magolee/fnt/site');
+    loadModalContent('#modalFolder', '#modalContentFolder', 'http://magolee/fnt/folder');
 
-    $('#modalFolder').on('show.bs.modal', function (e) {
-        var dataUrl = $(this).data('url');
-        $.ajax({
-            url: dataUrl, // HTTPS 프로토콜 사용
-            type: 'GET',
-            dataType: 'html',
-            success: function(data) {
-                $('#modalContentFolder').html(data); // 모달의 내용을 가져온 데이터로 설정
-            },
-            error: function(xhr, status, error) {
-                console.error('AJAX Error:', status, error);
-            }
-        });
+    $('[data-url]').on('click', function() {
+        var url = $(this).data('url');
+        moveURL(url);
     });
-
 });
+</script>
+
 
 </script>

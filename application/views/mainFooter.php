@@ -3,8 +3,9 @@
             <button style=" background:lightgray;display: flex;align-items: center;"><img src="../../assets/img/window.png" style="width:20px;">&nbsp <h5 style="font-size:17px;margin:0">start</h5></button>
         
             <div style="padding: 0 10px;display: flex;align-items: center;">
-                <img src="../../assets/img/i.png" style="width:20px;">
-                <img src="../../assets/img/i.png" style="width:20px;">
+                <img src="../../assets/img/a.png" style="width:20px;padding:0 3px;">
+                <img src="../../assets/img/wifi.png" style="width:20px;padding:0 3px;">
+                <img src="../../assets/img/mute.png" style="width:20px;padding:0 3px;">
                 <h5 style="font-size:14px;margin:0"><?php echo date('Y-m-d H:i:s'); ?> </h5>
             </div> 
         </div>
